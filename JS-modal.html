@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guessing Game</title>
+    <style>
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            border: 1px solid black;
+            background-color: white;
+            box-shadow: 5px 5px #000;
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            transform: (-50%, -50%);
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>OOP Modal</h1>
+
+    <div class="modal js-modal">
+        <h1 class="js-modal-title">This is a modal</h1>
+        <p class="js-modal-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos veritatis omnis
+            illum cum, voluptates
+            sint ut tenetur. Aliquam amet iusto iure deleniti recusandae maxime quasi incidunt aliquid, voluptatem
+            corporis sequi minus blanditiis praesentium nesciunt necessitatibus, fugiat nihil labore nemo? Aperiam
+            aspernatur quas deserunt tenetur corporis, porro non iure reprehenderit eligendi?</p>
+        <p>
+            <button class="js-close-modal">Close Modal</button>
+        </p>
+    </div>
+    <button class="js-open-modal">OPEN MODAL</button>
+
+
+    <script>
+        class Modal {
+            constructor(title = "Default title", text = "Default text") {
+                this.modal = document.querySelector(".js-modal")
+                this.title = title
+                this.text = text
+            }
+            open() {
+                this.modal.style.display = 'initial'
+            }
+            close() {
+                this.modal.style.display = 'none'
+            }
+            changeContent() {
+                if (this.title !== undefined) {
+                    this.modal.querySelector(".js-modal-title").innerText = this.title
+                }
+                if (this.text !== undefined) {
+                    this.modal.querySelector(".js-modal-text").innerText = this.text
+                }
+            }
+        }
+
+        const openBtn = document.querySelector(".js-open-modal")
+        const closeBtn = document.querySelector(".js-close-modal")
+        const modal = new Modal("New title", "New text in here")
+
+
+        openBtn.addEventListener('click', function (event) {
+            modal.open()
+        })
+
+        closeBtn.addEventListener('click', function (event) {
+            modal.close()
+        })
+
+
+    </script>
+
+</body>
+
+</html>
